@@ -1,0 +1,942 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.104.2">
+    <title>Carousel Template · Bootstrap v5.2</title>
+   
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/carousel/">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" type="text/css" href="css/my.css">
+
+
+    
+    
+    
+  </head>
+  <style type="text/css">
+    a{
+      text-decoration: none;
+    }
+    .menu
+      {
+        color: red;
+        font-style: cursive;
+         
+
+      }
+      .r{
+        color: white;
+        font-style: cursive;
+        
+
+
+      }
+      .p[type=text],[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 50%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+
+
+  </style>
+  <body>
+    <!-- nav bar -->
+    <div class="container">
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" >
+    <div class="container-fluid" style="font-family:sans-serif;" >
+      <a class="navbar-brand" href="" >Friend Circle</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse" style="font-style:times;">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item r">
+            <a class="nav-link r" aria-current="page" href="#myCarousel">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link r" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link r" href="#menu">Menu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link r" href="#Events">Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link r" href="#chefs">Chefs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link r" href="#Gallery">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link r" href="#loca">Contact</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search" style="text-align: center;">
+          <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+
+<div id="id01" class="modal">
+  
+  <form class="modal-content animate" action="/action_page.php" method="post">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="images\a.webp" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+      <label for="uname" class="p"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required><br>
+
+      <label for="psw" class="p"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+        
+      <button type="submit" style="margin-left:200px" class="p">Login</button>
+      <label>
+        <br><input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>
+</div>
+<!- home page -->
+
+<main>
+
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+          <img src="images\bur.jpg " style="margin-top:30px">
+
+          <div class="carousel-caption text-start" style="padding-bottom: 400px;color: ghostwhite;font-family: cursive;">
+            <h1><span class="text-info">Enjoy</span><span class="text-primary">Your Healthy</span> <br><span class="text-warning">Delicious</span> Food</h1>
+            <p style="font-size:25px">Make a list of all the foods you enjoy eating. . Taste is one factor of enjoyment.
+             </p>
+            <p><a class="btn btn-lg btn-primary" href="#contact">Book your tabel</a></p>
+          </div>
+        </div>
+      </div>
+</main>
+<!-- About our company -->
+<div style="border:1px solid black;background-color: lightgray;margin-top: 300px;font-family: cursive;">
+<div style="padding-top: 50px;font-family: sans-serif;" id="about">
+   <p style="text-align: center;font-size: 25px;color: blue;">ABOUT US</p>
+<h1 style="text-align: center;font-size: 45px;">Learn More <span style="color: orange;">About Us</span></h1>
+
+  <div class="row" style="padding-top:50px">
+    <div class="col-sm-6">  <img src="images\rrr.jpeg" style="width:100%;height: 700px">
+</div>
+     <div class="col-sm-6 container border border-bordered" style="font-family: sans-serif;font-size: 20px; word-break: break-all"><p>Boulanger operated a modest establishment<br><i class="fa fa-arrow-right"></i>
+
+ Before the French Revolution, aristocratic French households<br><i class="fa fa-arrow-right"></i>
+ maintained elaborate culinary establishments, but when the<br><i class="fa fa-arrow-right"></i>
+ Revolution reduced the number of private households offering<br><i class="fa fa-arrow-right"></i>
+ employment, many chefs and cooks found employment in restaurant kitchens or opened their own eating establishments. By 1804 Paris had more than 500 restaurants, producing most of the fugiat nulla pariatur.<br><i class="fa fa-arrow-right"></i>During the Napoleonic era the Palais-Royal, the colonnaded, tree-lined area adjacent the Louvre, became the site of many of the finest restaurants in Paris. The menu of the Véry, a leading restaurant of the era, listed a dozen soups consuming prodigious quantities of oysters, fish, meat dishes, fruits, wines, and liqueurs. It was a favourite haunt of gourmet-author Grimod de la Reynière, who considered it the finest restaurant in France.</p>
+
+<br>  <div class="container">
+  <iframe class="responsive-iframe" src="https://www.youtube.com/embed/tgbNymZ7vqY" style="height:300px;width:700px"></iframe>
+</div>
+</div>
+  </div>
+</div>
+<!-- cards in history -->
+   
+   <div>
+  <div class="row" style="padding-top:10px;font-family:cursive;padding-bottom: 0px;" >
+    <div class="col">
+
+
+    <div class="card text-center">
+  <div class="card-body bg-danger text-white">
+    <h3 class="card-title">Why Choose Yummy?</h3>
+    <p class="card-text container">Your body craves fat, it is the richest source of food energy, so nuts, cheese, ice cream, fried chicken nuggets and the like set off your fat detectors and convince you that this is the “pay day” this is the “good stuff convince you that this is the “pay day” .</p>
+    <a href="#" class="btn btn-primary">Learn more</a>
+  </div>
+</div>
+  </div>
+   <div class="col">
+
+
+    <div class="card text-center">
+  <div class="card-body bg-info text-black">
+    <h2 class="card-title">Restaurants in the Middle Ages</h1>
+    <p class="card-text container">In Europe through the Middle Ages and into the Renaissance, taverns and inns continued to be the main place to buy a prepared meal. In Spain, these establishments were called bodegas, which served small savory Spanish dishes called</p>
+    <a href="#" class="btn btn-primary">Learn more</a>
+  </div>
+</div>
+  </div>
+   <div class="col">
+
+
+    <div class="card text-center">
+  <div class="card-body bg-warning text-black">
+    <h4 class="card-title">The French Revolution and the Rise of Fine Dining</h1>
+    <p class="card-text container">
+      In France throughout the Middle Ages, guilds had monopolies on many aspects of prepared food. For example, charcutiers were the guild who prepared cooked meats for sale.  it was illegal it was illegal..
+      
+
+
+
+
+</p>
+    <a href="" class="btn btn-danger">Learn more</a>
+  </div>
+</div>
+  </div>
+   <div class="col">
+
+
+    <div class="card text-center">
+  <div class="card-body bg-primary text-black">
+    <h3 class="card-title">Corporis voluptates</h1>
+    <p class="card-text container">
+Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip uae harum pariatur laboris nisi ut aliquip uae harum pariatur laboris nisi ut aliquip uae harum pariatur laboris nisi ut aliquip uae harum pariatur laboris nisi ut aliquip aliquip uae harum pa</p>
+    <a href="" class="btn btn-info">Learn more</a>
+  </div>
+</div>
+  </div>
+  
+
+</div>
+</div>
+<!-- top brands -->
+<div style="margin-top:150px;background-color:lightgray;" >
+  <div style="text-align:center;">
+  <P style="font-size: 30px;color: black;margin-top:px;">Top</P>
+
+<h1><span class="text-primary">Check</span> <span class="text-danger">Our brands</span></h1>
+</div>
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="card-group">
+  <div class="card">
+    <img src="images\a.webp" class="card-img-top" alt="...">
+    <div class="card-body">
+
+      
+    </div>
+  </div>
+  <div class="card">
+    <img src="images\b.webp" class="card-img-top" alt="...">
+    <div class="card-body">
+      
+    </div>
+  </div>
+  <div class="card">
+    <img src="images\c.webp" class="card-img-top" alt="..." style="height:370px">
+    <div class="card-body">
+    
+    </div>
+  </div>
+   <div class="card">
+    <img src="images\d.webp" class="card-img-top" alt="...">
+    <div class="card-body">
+    
+    </div>
+
+  </div>
+</div>
+    </div>
+    <div class="carousel-item">
+      <<div class="card-group">
+  <div class="card">
+    <img src="images\e.webp" class="card-img-top" alt="...">
+    <div class="card-body">
+      
+    </div>
+  </div>
+  <div class="card">
+    <img src="images\g.webp" class="card-img-top" alt="...">
+  </div>
+  <div class="card">
+    <img src="images\h.webp" class="card-img-top" alt="...">
+  </div>
+  <div class="card">
+    <img src="images\b.webp" class="card-img-top" alt="...">
+  </div>
+   <div class="card">
+    <img src="images\g.webp" class="card-img-top" alt="...">
+  </div>
+
+</div>
+    </div>
+    <div class="carousel-item">
+      <div class="card-group">
+  <div class="card">
+    <img src="images\i.webp" class="card-img-top" alt="...">
+  </div>
+  <div class="card">
+    <img src="images\g.webp" class="card-img-top" alt="...">
+  </div>
+  <div class="card">
+    <img src="images\c.webp" class="card-img-top" alt="...">
+</div>
+<div class="card">
+    <img src="images\d.webp" class="card-img-top" alt="...">
+</div>
+    </div>
+
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+</div>
+</div>
+
+<!-- MENU -->
+
+<div id="menu" style="border: 1px solid black;background-color:whitesmoke;margin-bottom: 80px ;margin-top: 200px;">
+  <h1 style="text-align: center;padding-top: 100px;font-style: italic;font-size: 40px;">check our <span style="font-style:italic;color: orange;"> yummy menu </span></h1>
+  <ul class="nav justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link menu">Starters</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link menu">Breakfast</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link menu">Lunch</a>
+  </li>
+   <li class="nav-item">
+    <a class="nav-link menu ">Dinner</a>
+  </li>
+
+</ul>
+<div >
+<p style="text-align:center;font-size: 30px;">Menu</p>
+<h1 style="text-align:center;">Staters</h1>
+<div class="row" style="text-align:center;">
+  <div class="col">
+    <a href="https://www.zomato.com/bangalore"><img src="images\9.webp" class="photo"><h4>Dosa<br><br></a>
+
+<span style="color:orange;">$8.95</span>
+  </div>
+  <div class="col">
+    <a href="https://www.zomato.com/bangalore"><img src="images\14.webp" style="border-radius:70px;height: 300px;" class="photo"><br><h4>Chicken fry<h4><br></a>
+
+<span style="color:orange;">$8.95</span>
+  </div>
+   <div class="col">
+   <a href="https://www.zomato.com/bangalore"><img src="images\15.webp" class="photo"><br><h4>Chicken biryani<h4>
+    </a><br>
+
+<span style="color:orange;">$5.95 <br> 
+</span>
+
+  </div>
+  
+   <div class="col">
+    <a href="">
+    <a href="https://www.zomato.com/bangalore"><img src="images\menu-item-2.png" class="photo" ><br><h4>Panner<h4><br></a>
+<span style="color:orange;">$2.45</span>
+  </div>  
+</div>
+<div class="row" style="text-align:center;margin-top: 50px;">
+  <div class="col">
+    <a href="https://www.zomato.com/bangalore"><img src="images\19.webp" class="photo"><br><h4>Burgar<br><br></a>
+
+<span style="color:orange;">$8.95</span>
+  </div>
+  <div class="col">
+    <a href="https://www.zomato.com/bangalore"><img src="images\20.webp" style="border-radius:70px;height: 300px;" class="photo"><br><h4>
+rolles</h4><br></a>
+
+<span style="color:orange;">$8.95</span>
+  </div>
+   <div class="col">
+   <a href="https://www.zomato.com/bangalore"><img src="images\22.webp" class="photo"><br><h4>Thali<h4><br></a>
+<span style="color:orange;">$5.95 <br> 
+</span>
+
+  </div>
+  
+   <div class="col">
+    <a href="">
+    <a href="https://www.zomato.com/bangalore"><img src="images\menu-item-2.png" class="photo" ><h4>Pizza<h4><br></a>
+<span style="color:orange;">$2.45</span>
+  </div>  
+</div>
+<!-- tiffans -->
+<div class="row" style="text-align:center;margin-top: 30px;margin-bottom:100px;">
+  <div class="col">
+   <a href="https://www.zomato.com/bangalore"> <img src="images\menu-item-2 (1).png" class="photo"><br><h4>Magnam Tiste<h4><br>
+Lorem, deren, trataro, filede, nerada<br></a>
+
+<span style="color:orange;">$6.95</span>
+  </div>
+   <div class="col">
+    <a href="https://www.zomato.com/bangalore"><img src="images\menu-item-6.png" class="photo" ><br><h4>Eos Lubidutam<h4><br>
+hot, sweet, spacy, maggie, nerada<br></a>
+<span style="color:orange;">$1.95</span>
+
+  </div>
+  
+   <div class="col">
+   <a href="https://www.zomato.com/bangalore"> <img src="images\menu-item-4 (1).png" class="photo"><br><h4>Laboriosam Direva<h4><br>
+Lorem, deren, trataro, filede, nerada<br></a>
+<span style="color:orange;">$8.95</span>
+  </div>
+
+
+<!-- Events -->
+<div style="border:1px solid black;background-color: whitesmoke;">
+  <div style="margin-top: 150px;">
+  <div style="text-align:center;margin-top: 50px;" id="Events" >
+  <p>EVENTS</p>
+ <h3 style="font-style:italic;">Share Your <span style="color:orange;">Moments</span> In Our Restaurant</h3>
+</div>
+</div>
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true" style="margin-top: 30px;">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="card-group">
+  <div class="card">
+    <img src="images\party.gif" class="card-img-top" alt="..." style="height:300px">
+    <div class="card-body">
+      <h5 class="card-title">birthday party</h5>
+      <p class="card-text">Quo corporis voluptas ea ad. Consectetur inventore sapiente ipsum voluptas eos omnis facere. Enim facilis veritatis id est rem repudiandae nulla expedita quas card has even longer content. 
+      </p>
+      <p class="card-text"><button class="btn btn-primary">$80</button></p>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images\party1.gif" class="card-img-top" alt="..." style="height:300px">
+    <div class="card-body">
+      <h5 class="card-title">private party</h5>
+      <p class="card-text">Quo corporis voluptas ea ad. Consectetur inventore sapiente ipsum voluptas eos omnis facere. Enim facilis veritatis id est rem repudiandae nulla expedita quas card has even longer content.</p>
+      <p class="card-text"><button class="btn btn-primary">$67</button></p>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images\party2.gif" class="card-img-top" alt="..." style="height: 300px;">
+    <div class="card-body">
+      <h5 class="card-title">marriage pary</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text"><button class="btn btn-primary">$110</button></p>
+    </div>
+  </div>
+</div>
+    </div>
+    <div class="carousel-item">
+      <div class="card-group">
+  <div class="card">
+    <img src="images\q4.jpeg" class="card-img-top" alt="..." style="height: 300px;">
+    <div class="card-body">
+      <h5 class="card-title">Dinner party</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer This is a wider card with supporting text .</p>
+      <p class="card-text"><button class="btn btn-primary">$245</button></p>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images\q5.jpeg" class="card-img-top" alt="..." style="height: 300px;">
+    <div class="card-body">
+      <h5 class="card-title">function booking</h5>
+      <p class="card-text">This card has supporting text below as a natural lead-in to additional content This card has supporting text below as a natural lead-in to This is a wider card with supporting text  .</p>
+      <p class="card-text"><button class="btn btn-primary">$110</button></p>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images\q6.jpg" class="card-img-top style" alt="..." style="height: 300px;">
+    <div class="card-body">
+      <h5 class="card-title">others</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text"><button class="btn btn-primary">$112</button></p>
+    </div>
+  </div>
+</div>
+      
+    </div>
+    <div class="carousel-item">
+       <div class="card-group">
+  <div class="card">
+    <img src="images\q4.jpeg" class="card-img-top" alt="..." style="height:300px">
+    <div class="card-body">
+      <h5 class="card-title">event</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><button class="btn btn-primary">$110</button></p>
+
+      
+    </div>
+  </div>
+  <div class="card">
+    <img src="images\q5.jpeg" class="card-img-top" alt="..." style="height:300px">
+    <div class="card-body">
+      <h5 class="card-title">Audio Function</h5>
+      <p class="card-text">This card has supporting text below as a natural lead-in to additional content. This is a wider card with supporting text below as a natural lead-in to additional content. </p>
+             <p class="card-text"><button class="btn btn-primary">$110</button></p>
+
+    </div>
+  </div>
+  <div class="card">
+    <img src="images\q6.jpg" class="card-img-top" alt="..." style="height:300px">
+    <div class="card-body">
+      <h5 class="card-title">pre release event</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+            <p class="card-text"><button class="btn btn-primary">$110</button></p>
+
+    
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</div>
+</div>
+<div>
+  
+<!-- cheifs -->
+<div style="margin-top:150px;border:1px solid black;background-color: lightgray;">
+<div style="text-align:center;">
+  
+  <p class="text-info" style="font-size:30px">CHEFS</p>
+<H1 style="color: orange;margin-bottom: 100px;"><span class="text-danger">Our</span> <span class="text-primary">Proffesional</span>  Chefs</H1>
+</div>
+<div class="card-group" style=";" id="chefs" style="font-family:Fantasy">
+  <div class="card" >
+    <img src="images\chefs-1.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Walter White</h5>
+      <p class="card-text" style="font-family:Fantasy">Master Chef
+Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut. Ipsum exercitationem iure minima enim corporis et voluptate.</p>
+      <p class="card-text"><button class="btn btn-danger">More information</button></p>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images\chefs-2.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">sapiente</h5>
+      <p class="card-text-center" style="font-family:Fantasy">Quo esse repellendus quia id. Est eum et accusantium pariatur fugit nihil minima suscipit corporis. Voluptate sed quas reiciendis animi neque sapiente.</p>
+      <p class="card-text"><button class="btn btn-danger">More information</button></p>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images\chefs-3.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Rama krisha</h5>
+      <p class="card-text-center" style="font-family:Fantasy">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text"><button class="btn btn-danger">More information</button></p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- book in tabel -->
+
+<div class="container" style="border:1px solid black;background-color: lightgray;margin-top: 200px;border-radius: 14px;" id="contact">
+<div style="text-align:center;margin-top: 50px;">
+ <p style="color:green;font-size: 25px;"> BOOK A TABLE</p>
+ <h1><span style="color:orange;">Book</span> <span style="color:red;">Your</span> <span style="color:green;">Stay </span>
+  <span style="color:blue;">With Us</span> </h1>
+</div>
+
+
+  <div id="contact">
+  <form action="/action_page.php" style="font-size:20px">
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name.." required>
+
+    <label for="lname">Last Name</label>
+    <input type="text"  name="lastname" placeholder="Your last name.." required>
+
+     <label for="lname">Adderes</label>
+    <input type="text"  name="lastname" placeholder="Your Adderes.." required>
+    <br><br>
+
+     <label for="lname">Date</label>
+    <input type="Date"  name="lastname" placeholder="" required>
+     <label for="lname">total numbers</label>
+    <input type="number" name="lastname" placeholder="Your Number.." required>
+<br><br>
+    <label for="lname">Email</label>
+    <input type="text" name="lastname" placeholder="Your Email.." required>
+<br><br>
+    <select id="country" name="country">tabel
+      <option value="australia">tabel 1</option>
+      <option value="canada">tabel 2</option>
+      <option value="usa">tabel 3</option>
+    </select>
+    <br><br>
+  
+    <input type="submit" value="book">
+  </form>
+</div>
+</div>
+<!-- Gallery -->
+<div style="margin-top:150px;border:1px solid black;background-color:whitesmoke;" >
+  <div style="text-align:center;">
+  <P style="font-size: 30px;color: pink;margin-top: 50px;" id="Gallery">GALLERY</P>
+
+<h1><span class="text-primary">Check</span> <span class="text-danger">Our Gallery</span></h1>
+</div>
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="card-group">
+  <div class="card">
+    <img src="images\gallery-2.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      
+    </div>
+  </div>
+  <div class="card">
+    <img src="images\gallery-4.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      
+    </div>
+  </div>
+  <div class="card">
+    <img src="images\gallery-5.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+    
+    </div>
+  </div>
+</div>
+    </div>
+    <div class="carousel-item">
+      <<div class="card-group">
+  <div class="card">
+    <img src="images\gallery-7.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      
+    </div>
+  </div>
+  <div class="card">
+    <img src="images\gallery-8.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      
+    </div>
+  </div>
+  <div class="card">
+    <img src="images\gallery-6 (1).jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+    
+    </div>
+  </div>
+</div>
+    </div>
+    <div class="carousel-item">
+      <div class="card-group">
+  <div class="card">
+    <img src="images\gallery-7.jpg" class="card-img-top" alt="...">
+  </div>
+  <div class="card">
+    <img src="images\q3.jpeg" class="card-img-top" alt="...">
+  </div>
+  <div class="card">
+    <img src="images\gallery-2.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+  </div>
+</div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+</div>
+<!-- location -->
+
+<div class="container" style="text-align: center;margin-top:150px;border: 1px solid black;background-color: lightgray;" id="loca">
+  <p style="color:tomato;font-family: monospace;margin-top: 30px;font-size: 30px;">CONTACT
+</p>
+  <h1><span style="color:orange;">Need Help?</span><span style="color:blue;"> Contact Us</span></h1>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30437.088969255434!2d78.44412074006542!3d17.524875263505997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb913acbd17dc5%3A0xf64b9c3fd89023b8!2z4LC54LC_4LCuIOCwl-CxjeCwsOCwvuCwguCwoeCxjSDgsLDgsYbgsLjgsY3gsJ_gsL7gsLDgsYbgsILgsJ_gsY0!5e0!3m2!1ste!2sin!4v1669081143367!5m2!1ste!2sin" width="100%" height="400px" style="border:0;margin-top: 30px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+  <div class="row" style="padding-left: 100px;padding-right: 100px;margin-top: 30px">
+                         
+  <div class="col-sm-6" style="border:1px solid black;background-color: lightgray;padding-left: 40px;padding-top: 10px;">
+    <h2><i class="fa fa-address-book fa-2x" style="color:orange;width: 80px;padding-left:10px;"></i>our Adderes</h1>
+      <p style="margin-left: 70px;">A108 suchitra, hyderbad, NY 535022</p></div>
+    <div class="col-sm-6" style="border:1px solid black;background-color: lightgray;padding-left: 40px;padding-top: 20px;">
+      <h2><i class="fa fa-envelope-square fa-2x" style="color:orange;width: 80px;padding-left:10px;"></i>Email as</h1>
+      <p style="margin-left: 90px;">email@123.com</p></div>
+  </div>
+  <div class="row" style="padding-left: 100px;padding-right: 100px;margin-top: 30px;">
+    <div class="col-sm-6" style="border:1px solid black;background-color: lightgray;padding-left: 40px;">
+      <h2><i class="fa fa-phone fa-2x" style="color:orange;width: 80px;padding-left:10px;"></i>call us</h1>
+      <p style="margin-left: 70px;">021-546789-678</p></div>
+    <div class="col-sm-6" style="border:1px solid black;background-color: lightgray;padding-left: 40px">
+      <h2> <i class="fa fa-share-alt fa-2x" style="color:orange;width: 80px;padding-left:10px;"></i>open hours</h4>
+      <p style="margin-left: 90px;">Mon-Sat: 11AM - 23PM; Sunday: Close</p></div>
+  </div>
+  <!-- sent measages -->
+  <div class="container" style="border:1px solid black;background-color: lightgray;margin-top: 70px;">
+  <form action="forms/contact.php" method="post" role="form" class="php-email-form p-3 p-md-4">
+          <div class="row">
+            <div class="col-xl-6 form-group">
+              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+            </div>
+            <div class="col-xl-6 form-group">
+              <input type="text" name="name" class="form-control" id="name" placeholder="Your email" required>
+            </div>
+
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+          </div>
+          <div class="form-group" >
+            <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+          </div>
+        
+          <div class="text-center" style="margin-top:40px">
+          <!-- Button trigger modal popup box-->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  submit
+</button>
+
+<!-- popup-->
+
+
+
+</div></div>
+        </form>
+      </div>
+      <!-- footer -->
+      <footer id="footer" class="footer" style="margin-top:100px;border:1px solid black;background-color: black;padding-top: 100px;padding-bottom: 100px;color: whitesmoke;">
+
+    <div class="container">
+      <div class="row gy-3">
+        <div class="col-lg-3 col-md-6 d-flex">
+          <i class="bi bi-geo-alt icon"></i>
+          <div>
+            <h4>Address</h4>
+            <p>
+              suchitra  <br>
+              Hyderbad, NY 535022 - US<br>
+            </p>
+          </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links d-flex">
+          <i class="bi bi-telephone icon"></i>
+          <div>
+            <h4>Reservations</h4>
+            <p>
+              <strong>Phone:</strong> +1 5589 55488 55<br>
+              <strong>Email:</strong> info@example.com<br>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links d-flex">
+          <i class="bi bi-clock icon"></i>
+          <div>
+            <h4>Opening Hours</h4>
+            <p>
+              <strong>Mon-Sat: 11AM</strong> - 23PM<br>
+              Sunday: Closed
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links">
+          <h4>Follow Us</h4>
+          <div class="social-links d-flex">
+            <a href="#" class="twitter" ><i class="fa fa-twitter fa-2x" style="margin-left:30px"></i></a>
+            <a href="#" class="facebook"><i class="fa fa-facebook fa-2x" style="margin-left:30px"></i></a>
+            <a href="#" class="instagram"><i class="fa fa-instagram fa-2x" style="margin-left:30px"></i></a>
+            <a href="#" class="linkedin"><i class="fa fa-linkedin fa-2x" style="margin-left:30px"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Yummy</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by <a href="">sreenu creative</a>
+      </div>
+    </div>
+
+  </footer>
+  <script type="text/javascript">
+    <script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+  </script>
+ 
+
+ 
+    
+
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js" id="loca"></script>
+
+      
+  </body>
+</html>
